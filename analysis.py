@@ -177,7 +177,7 @@ def load_lfads_model(model_dir_path, input_size, device):
         )
 
     # load from checkpoint
-    checkpoint = torch.load(os.path.join(model_dir_path,'checkpoints','best.pth'),map_location='cuda')
+    checkpoint = torch.load(os.path.join(model_dir_path,'checkpoints','best.pth'),map_location=device)
     model.load_state_dict(checkpoint['net'],strict=False)
     model.to(device)
     #TODO: this might break with multidevice models checkpoints. Don't save multidevice models.
