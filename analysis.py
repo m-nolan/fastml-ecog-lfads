@@ -546,8 +546,8 @@ def create_model_performance_figures(model,ds,performance_metric_table,psd_stat_
     med_trial_mse = mse_sorted[n_all_trials//2 - NUM_PLOT_TRIALS//2 + np.arange(NUM_PLOT_TRIALS)]
     worst_trial_idx = sorted_trial_idx[-NUM_PLOT_TRIALS:]
     worst_trial_mse = mse_sorted[-NUM_PLOT_TRIALS:]
-    pick_trial_idx = get_pick_trial_idx(ds,PICK_TRIAL_START_IDX,PICK_TRIAL_FILE_IDX)
     if pick_trials:
+        pick_trial_idx = get_pick_trial_idx(ds,PICK_TRIAL_START_IDX,PICK_TRIAL_FILE_IDX)
         pick_trial_mse = [performance_metric_table[performance_metric_table['trial_idx'] == pti]['mse'].values[0] for pti in pick_trial_idx]
     ax_best_trials = plot_model_trials(ax_best_trials,model,ds,psd_stat_dict['srate'],best_trial_idx,best_trial_mse)
     ax_med_trials = plot_model_trials(ax_med_trials,model,ds,psd_stat_dict['srate'],med_trial_idx,med_trial_mse)
